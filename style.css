@@ -159,9 +159,6 @@ h1 {
     box-shadow: 0 0 20px rgba(0, 208, 132, 0.6);
 }
 
-.btn-zero {
-    grid-column: span 2;
-}
 .btn-custom {
     background: linear-gradient(135deg, #9d4edd 0%, #7b2cbf 100%);
     color: white;
@@ -174,6 +171,11 @@ h1 {
     background: linear-gradient(135deg, #c77dff 0%, #9d4edd 100%);
     box-shadow: 0 0 20px rgba(157, 78, 221, 0.6);
 }
+
+.btn-zero {
+    grid-column: span 2;
+}
+
 @media (max-width: 480px) {
     .calculator {
         padding: 20px;
