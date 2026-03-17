@@ -165,7 +165,7 @@ function calculateGD21() {
         return;
     }
     
-    const result = (num * 850) / 1000;
+    const result = (num * 857) / 1000;
     
     const finalResult = Math.round(result * 1000000000) / 1000000000;
     
