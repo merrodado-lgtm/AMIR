@@ -5,11 +5,9 @@ let previousValue = '';
 let operation = null;
 let shouldResetDisplay = false;
 
-// Initialize display
 updateDisplay();
 
 function appendToDisplay(value) {
-    // Handle operators
     if (['+', '-', '×', '÷', '%'].includes(value)) {
         if (currentValue === '' || currentValue === '0') return;
         
@@ -24,7 +22,6 @@ function appendToDisplay(value) {
         return;
     }
 
-    // Handle special functions
     if (value === '√') {
         const num = parseFloat(currentValue);
         if (isNaN(num) || num < 0) return;
@@ -54,7 +51,6 @@ function appendToDisplay(value) {
         return;
     }
 
-    // Handle decimal point
     if (value === '.') {
         if (shouldResetDisplay) {
             currentValue = '0.';
@@ -70,7 +66,6 @@ function appendToDisplay(value) {
         return;
     }
 
-    // Handle numbers
     if (shouldResetDisplay) {
         currentValue = value;
         shouldResetDisplay = false;
@@ -78,7 +73,7 @@ function appendToDisplay(value) {
         if (currentValue === '0' && value !== '0') {
             currentValue = value;
         } else if (currentValue === '0' && value === '0') {
-            // Do nothing
+            
         } else {
             currentValue += value;
         }
@@ -130,7 +125,6 @@ function calculate() {
             return;
     }
 
-    // Round to avoid floating point errors
     result = Math.round(result * 1000000000) / 1000000000;
     
     currentValue = result.toString();
@@ -164,10 +158,8 @@ function deleteLast() {
 }
 
 function updateDisplay() {
-    // Update main display
     display.value = currentValue || '0';
 
-    // Update history display
     if (previousValue && operation) {
         const operatorDisplay = {
             '+': '+',
@@ -175,7 +167,7 @@ function updateDisplay() {
             '×': '×',
             '÷': '÷',
             '%': '%',
-            '^': 'x^
+            '^': 'x^'
         };
         displayHistory.textContent = previousValue + ' ' + operatorDisplay[operation];
     } else {
@@ -183,7 +175,6 @@ function updateDisplay() {
     }
 }
 
-// Keyboard support
 document.addEventListener('keydown', (event) => {
     const key = event.key;
 
