@@ -176,6 +176,25 @@ function calculateGD21() {
     updateDisplay();
 }
 
+function calculateGD24() {
+    const num = parseFloat(currentValue);
+    
+    if (isNaN(num)) {
+        alert('من فضلك ادخل رقم أولاً');
+        return;
+    }
+    
+    const result = (num * 75) / 100;
+    
+    const finalResult = Math.round(result * 1000000000) / 1000000000;
+    
+    currentValue = finalResult.toString();
+    previousValue = '';
+    operation = null;
+    shouldResetDisplay = true;
+    updateDisplay();
+}
+
 function updateDisplay() {
     display.value = currentValue || '0';
 
