@@ -174,6 +174,25 @@ function updateDisplay() {
         displayHistory.textContent = '';
     }
 }
+function calculate18~21() {
+    const num = parseFloat(currentValue);
+    
+    if (isNaN(num)) {
+        alert('من فضلك ادخل رقم أولاً');
+        return;
+    }
+    
+    const result = (num * 850) / 1000;
+    
+    // Round to avoid floating point errors
+    const finalResult = Math.round(result * 1000000000) / 1000000000;
+    
+    currentValue = finalResult.toString();
+    previousValue = '';
+    operation = null;
+    shouldResetDisplay = true;
+    updateDisplay();
+}
 
 document.addEventListener('keydown', (event) => {
     const key = event.key;
