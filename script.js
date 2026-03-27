@@ -164,17 +164,18 @@ function formatNumber(num) {
 }
 
 function calculateGD21() {
-    const num = parseFloat(currentValue.replace(/,/g, ''));
+    const num = parseFloat(currentValue);
     
     if (isNaN(num)) {
         alert('من فضلك ادخل رقم أولاً');
         return;
     }
     
-    const result = (num * 1000) / 872.50;
-    const finalResult = Math.round(result / 1000) * 1000;
+    const result = (num * 872.50) / 1000;
     
-    currentValue = formatNumber(finalResult);
+    const finalResult = Math.round(result * 1000000000) / 1000000000;
+    
+    currentValue = finalResult.toString();
     previousValue = '';
     operation = null;
     shouldResetDisplay = true;
@@ -182,17 +183,18 @@ function calculateGD21() {
 }
 
 function calculateGD18() {
-    const num = parseFloat(currentValue.replace(/,/g, ''));
+    const num = parseFloat(currentValue);
     
     if (isNaN(num)) {
         alert('من فضلك ادخل رقم أولاً');
         return;
     }
     
-    const result = (num * 1000) / 747.50;
-    const finalResult = Math.round(result / 1000) * 1000;
+    const result = (num * 747.50) / 1000;
     
-    currentValue = formatNumber(finalResult);
+    const finalResult = Math.round(result * 1000000000) / 1000000000;
+    
+    currentValue = finalResult.toString();
     previousValue = '';
     operation = null;
     shouldResetDisplay = true;
@@ -200,17 +202,18 @@ function calculateGD18() {
 }
 
 function calculateGD5Bound() {
-    const num = parseFloat(currentValue.replace(/,/g, ''));
+    const num = parseFloat(currentValue);
     
     if (isNaN(num)) {
         alert('من فضلك ادخل رقم أولاً');
         return;
     }
     
-    const result = (num * 1000) / 875;
-    const finalResult = Math.round(result / 1000) * 1000;
+    const result = (num * 875) / 1000;
     
-    currentValue = formatNumber(finalResult);
+    const finalResult = Math.round(result * 1000000000) / 1000000000;
+    
+    currentValue = finalResult.toString();
     previousValue = '';
     operation = null;
     shouldResetDisplay = true;
