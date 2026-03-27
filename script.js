@@ -171,7 +171,7 @@ function calculateGD21() {
         return;
     }
     
-    const result = (num * 872.50) / 1000;
+    const result = (num * 1000) / 872.50;
     
     const finalResult = Math.round(result * 1000000000) / 1000000000;
     
@@ -190,7 +190,7 @@ function calculateGD18() {
         return;
     }
     
-    const result = (num * 747.50) / 1000;
+    const result = (num * 1000) / 747.50;
     
     const finalResult = Math.round(result * 1000000000) / 1000000000;
     
@@ -209,7 +209,7 @@ function calculateGD5Bound() {
         return;
     }
     
-    const result = (num * 875) / 1000;
+    const result = (num * 1000) / 875;
     
     const finalResult = Math.round(result * 1000000000) / 1000000000;
     
