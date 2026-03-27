@@ -23,7 +23,7 @@ function appendToDisplay(value) {
     }
 
     if (value === '√') {
-        const num = parseFloat(currentValue);
+        const num = parseFloat(currentValue.replace(/,/g, ''));
         if (isNaN(num) || num < 0) return;
         currentValue = Math.sqrt(num).toString();
         shouldResetDisplay = true;
@@ -88,8 +88,8 @@ function calculate() {
     }
 
     let result;
-    const prev = parseFloat(previousValue);
-    const current = parseFloat(currentValue);
+    const prev = parseFloat(previousValue.replace(/,/g, ''));
+    const current = parseFloat(currentValue.replace(/,/g, ''));
 
     if (isNaN(prev) || isNaN(current)) {
         return;
@@ -147,6 +147,8 @@ function deleteLast() {
         return;
     }
 
+    currentValue = currentValue.replace(/,/g, '');
+
     if (currentValue.length === 1) {
         currentValue = '0';
     } else {
@@ -157,38 +159,58 @@ function deleteLast() {
     updateDisplay();
 }
 
+function formatNumber(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
 function calculateGD21() {
-    const num = parseFloat(currentValue);
+    const num = parseFloat(currentValue.replace(/,/g, ''));
     
     if (isNaN(num)) {
         alert('من فضلك ادخل رقم أولاً');
         return;
     }
     
-    const result = (num * 857) / 1000;
+    const result = (num * 1000) / 872.50;
+    const finalResult = Math.round(result / 1000) * 1000;
     
-    const finalResult = Math.round(result * 1000000000) / 1000000000;
-    
-    currentValue = finalResult.toString();
+    currentValue = formatNumber(finalResult);
     previousValue = '';
     operation = null;
     shouldResetDisplay = true;
     updateDisplay();
 }
 
-function calculateGD24() {
-    const num = parseFloat(currentValue);
+function calculateGD18() {
+    const num = parseFloat(currentValue.replace(/,/g, ''));
     
     if (isNaN(num)) {
         alert('من فضلك ادخل رقم أولاً');
         return;
     }
     
-    const result = (num * 75) / 100;
+    const result = (num * 1000) / 747.50;
+    const finalResult = Math.round(result / 1000) * 1000;
     
-    const finalResult = Math.round(result * 1000000000) / 1000000000;
+    currentValue = formatNumber(finalResult);
+    previousValue = '';
+    operation = null;
+    shouldResetDisplay = true;
+    updateDisplay();
+}
+
+function calculateGD5Bound() {
+    const num = parseFloat(currentValue.replace(/,/g, ''));
     
-    currentValue = finalResult.toString();
+    if (isNaN(num)) {
+        alert('من فضلك ادخل رقم أولاً');
+        return;
+    }
+    
+    const result = (num * 1000) / 875;
+    const finalResult = Math.round(result / 1000) * 1000;
+    
+    currentValue = formatNumber(finalResult);
     previousValue = '';
     operation = null;
     shouldResetDisplay = true;
@@ -196,7 +218,8 @@ function calculateGD24() {
 }
 
 function updateDisplay() {
-    display.value = currentValue || '0';
+    const displayValue = currentValue.includes(',') ? currentValue : formatNumber(parseFloat(currentValue.replace(/,/g, '')) || 0);
+    display.value = displayValue;
 
     if (previousValue && operation) {
         const operatorDisplay = {
